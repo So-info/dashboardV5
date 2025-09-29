@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>Admin – La Plage</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.13/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-sky-50 min-h-screen" data-page="admin">
+<header id="nav"></header>
+<main class="p-4 space-y-6">
+<h1 class="text-xl font-semibold text-sky-700">Administration</h1>
+
+
+<!-- Créer/éditer un salarié (rôle) -->
+<section class="bg-white rounded-2xl shadow p-4">
+<h2 class="font-semibold mb-3">Gestion des comptes salariés</h2>
+<p class="text-sm text-gray-600 mb-3">Le compte est créé automatiquement à la 1ère connexion Google. Ici vous assignez le rôle.</p>
+<form id="userForm" class="space-y-3">
+<input type="email" id="userEmail" placeholder="Email salarié" required class="input" />
+<select id="userRole" class="input" required>
+<option value="reception">Réception</option>
+<option value="technique">Technique</option>
+<option value="menage">Ménage</option>
+<option value="admin">Admin</option>
+</select>
+<button class="btn-primary w-full" type="submit">Assigner/Mettre à jour le rôle</button>
+</form>
+<p id="userMsg" class="text-sm mt-2"></p>
+</section>
+
+
+<!-- Liste des utilisateurs -->
+<section class="bg-white rounded-2xl shadow p-4">
+<div class="flex items-center justify-between mb-3">
+<h2 class="font-semibold">Utilisateurs</h2>
+<button id="refreshUsers" class="btn-outline">Rafraîchir</button>
+</div>
+<ul id="usersList" class="divide-y"></ul>
+</section>
+</main>
+
+
+<script type="module" src="/js/firebase-init.js"></script>
+<script type="module" src="/js/auth.js"></script>
+<script type="module" src="/js/ui.js"></script>
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

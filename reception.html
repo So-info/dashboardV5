@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>Réception – La Plage</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.13/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-sky-50 min-h-screen" data-page="reception">
+<header id="nav"></header>
+<main class="p-4 space-y-6">
+<h1 class="text-xl font-semibold text-sky-700">Réception</h1>
+
+
+<!-- Création intervention vers Technique -->
+<section class="bg-white rounded-2xl shadow p-4">
+<h2 class="font-semibold mb-3">Nouvelle intervention (Technique)</h2>
+<form id="createIntervention" class="grid gap-3">
+<input class="input" id="mhNumber" placeholder="N° Mobilhome" required />
+<textarea class="input" id="details" placeholder="Détail de l'intervention (optionnel)"></textarea>
+<div class="grid grid-cols-2 gap-3">
+<label class="switch"><input type="checkbox" id="clientPresent"/> <span>Client présent</span></label>
+<label class="switch"><input type="checkbox" id="allowEntry"/> <span>Autorisation d'entrée</span></label>
+</div>
+<button class="btn-primary" type="submit">Créer l'intervention</button>
+</form>
+<p id="createMsg" class="text-sm mt-2"></p>
+</section>
+
+
+<!-- Liste interventions -->
+<section class="bg-white rounded-2xl shadow p-4">
+<div class="flex items-center justify-between mb-3">
+<h2 class="font-semibold">Interventions en cours</h2>
+<a class="btn-outline" href="intervention.html">Ouvrir la page Interventions</a>
+</div>
+<ul id="receptionInterventions" class="divide-y"></ul>
+</section>
+</main>
+
+
+<script type="module" src="/js/firebase-init.js"></script>
+<script type="module" src="/js/auth.js"></script>
+<script type="module" src="/js/ui.js"></script>
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

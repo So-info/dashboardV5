@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>La Plage – Connexion</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.13/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center">
+<main class="w-full max-w-sm p-6 text-center">
+<img src="logo-la-plage.png" alt="La Plage" class="mx-auto w-32 h-32 object-contain mb-6" />
+<h1 class="text-2xl font-semibold text-sky-600 mb-2">Bienvenue sur le dashboard du camping La Plage</h1>
+<p class="text-gray-600 mb-8">Accédez à votre espace via Google.</p>
+
+
+<!-- Bouton Google uniquement -->
+<button id="googleSignIn" class="w-full py-3 rounded-2xl bg-sky-500 text-white font-semibold active:scale-[.98]">
+Continuer avec Google
+</button>
+
+
+<p id="loginError" class="text-red-600 text-sm mt-4 hidden"></p>
+</main>
+
+
+<script type="module" src="/js/firebase-init.js"></script>
+<script type="module" src="/js/auth.js"></script>
+<script type="module">
+import { signInWithGoogle } from './js/auth.js'
+const btn = document.getElementById('googleSignIn')
+const err = document.getElementById('loginError')
+btn.addEventListener('click', async () => {
+try {
+err.classList.add('hidden')
+await signInWithGoogle()
+// Redirection gérée dans onAuthStateChanged (auth.js)
+} catch (e) {
+err.textContent = e.message || 'Erreur de connexion.'
+err.classList.remove('hidden')
+}
+})
+</script>
+</body>
+</html>
